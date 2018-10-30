@@ -6,28 +6,28 @@ import numpy as np
 bus = smbus.SMBus(1)
 
 # Data input from user into command line
-print "Rest Position"
+print ("Rest Position")
 restA=2.5
 restB=2.5
 restC=2.5
 restD=2.5
 restE=2.5
 restF=2.5
-print "Round One - X"
+print ("Round One - X")
 decA=2.5
 decB=2.5
 decC=2.5
 decD=2.5
 decE=-0.5
 decF=-0.5
-print "Round Two - Y"
+print ("Round Two - Y")
 decG=2.5
 decH=2.5
 decI=-0.5
 decJ=-0.5
 decK=2.5
 decL=2.5
-print "Round Three - Z"
+print ("Round Three - Z")
 decM=2.5
 decN=2.5
 decO=2.5
@@ -75,12 +75,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 
 time.sleep(2)
 
@@ -122,12 +122,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 
 time.sleep(0.5)
 
@@ -167,12 +167,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 time.sleep(0.5)
 # Y-Motion
 
@@ -212,12 +212,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 
 time.sleep(0.5)
 
@@ -257,12 +257,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 time.sleep(0.5)
 
 # Z-Motion
@@ -303,12 +303,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 
 time.sleep(0.5)
 
@@ -348,12 +348,12 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)
 
 #execfile("FinalDemo2.py") # automatically executes the second half of the flight profile, the roll, pitch, and yaw demonstration
 time.sleep(2)
@@ -396,9 +396,9 @@ for i in range(0,201):
 	i+=1
 
 # Print statements
-	print "Leg 1 : %.2f V" %voltA
-	print "Leg 2 : %.2f V" %voltB
-	print "Leg 3 : %.2f V" %voltC
-	print "Leg 4 : %.2f V" %voltD
-	print "Leg 5 : %.2f V" %voltE
-	print "Leg 6 : %.2f V" %voltF
+	print ("Leg 1 : %.2f V" %voltA)
+	print ("Leg 2 : %.2f V" %voltB)
+	print ("Leg 3 : %.2f V" %voltC)
+	print ("Leg 4 : %.2f V" %voltD)
+	print ("Leg 5 : %.2f V" %voltE)
+	print ("Leg 6 : %.2f V" %voltF)

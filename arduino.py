@@ -7,8 +7,5 @@ while True:
     x = float (ser.readline())
     y = float (ser.readline())
     z = float (ser.readline())
-    print "roll: %.2f" %x
-    print "pitch: %.2f" %y
-    print "yaw: %.2f" %z
-    #print read_serial
-    #time.sleep(0.01)
+    print ("roll: %.2f, pitch: %.2f, yaw: %.2f" %(x, y, z))
+
