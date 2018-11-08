@@ -14,12 +14,12 @@ restD=2.5
 restE=2.5
 restF=2.5
 print ("Round One - X")
-decA=2.5
-decB=2.5
-decC=2.5
-decD=2.5
-decE=-0.5
-decF=-0.5
+decA=5.5
+decB=5.5
+decC=5.5
+decD=5.5
+decE=5.5
+decF=5.5
 print ("Round Two - Y")
 decG=2.5
 decH=2.5
@@ -129,7 +129,7 @@ for i in range(0,201):
 	print ("Leg 5 : %.2f V" %voltE)
 	print ("Leg 6 : %.2f V" %voltF)
 
-time.sleep(0.5)
+time.sleep(10)
 
 for i in range(0,201):	
 	time.sleep(0.02)
