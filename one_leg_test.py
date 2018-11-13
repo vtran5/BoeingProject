@@ -7,7 +7,7 @@ bus = smbus.SMBus(1)
 
 # Data input from user into command line
 print ("Rest Position")
-restA=3
+restA=2.5
 ##
 t = np.arange(0,201,1)
 #Go to rest position
@@ -22,7 +22,7 @@ bus.write_i2c_block_data(0x56, 0x2F, dataA)
 voltA=float(dataA[0])/51.0
 # Print statements
 print ("Leg 1 : %.2f V" %voltA)
-time.sleep(30)
+time.sleep(20)
 
 # Go to zero position
 

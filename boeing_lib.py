@@ -3,16 +3,18 @@ import time
 from struct import*
 import numpy as np
 import smbus
+import serial
 t = np.arange(0,201,4)
 bus = smbus.SMBus(1)
 rest = 2.5
-def get_leg_length(x,y,z,pitch,roll,yaw):
+#ser = serial.Serial('/dev/ttyACM1',9600)
+def get_leg_length(yaw,roll,pitch,x,y,z):
     "This take the orientation as input, send them to simulink and get the leg lengths back"
-    position = [x, y, z, pitch, roll, yaw]
-    UDP_IP_PC = "192.168.1.2"
+    position = [yaw, roll, pitch, x, y,z]
+    UDP_IP_PC = "192.168.1.4"
     UDP_PORT_send = 11001
 
-    UDP_IP = "192.168.1.4"
+    UDP_IP = "192.168.1.3"
     UDP_PORT_receive = 11000
     sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
@@ -64,7 +66,7 @@ def turn_off():
         i+=1
 
         # Print statements
-        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
     return;
 
 def turn_on(): 
@@ -105,7 +107,7 @@ def turn_on():
         i+=1
 
         # Print statements
-        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
     return;
 
 def kill_platform():
@@ -149,7 +151,7 @@ def to_position(dec):
 
         i+=1
         # Print statements
-        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
     return;
 
 def to_rest(dec):
@@ -188,5 +190,27 @@ def to_rest(dec):
 
         i+=1
         # Print statements
-        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
-    return
+        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+    return;
+
+class Error(Exception):
+    """Base class for other exceptions"""
+    pass
+
+class VoltageOutOfRange(Error):
+    """When the voltages are greater than 10V"""
+    pass
+
+def get_IMU():
+    while true:
+        x1 = ser.readline()
+        if x1 == done:
+            break
+        
+    yaw = ser.readline()
+    pitch = ser.readline()
+    roll = ser.readline()
+    orientation = [yaw, pitch, roll]
+    return orientation;
+        
+    
