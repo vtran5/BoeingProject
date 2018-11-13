@@ -30,7 +30,7 @@ while str == "yes":
                 print(leg_length)
                 dec = [i*0.56 - rest for i in leg_length]
                 print("The computed voltages are:")
-                print(dec)
+                print("%.2f V, %.2f V, %.2f V, %.2f V, %.2f V, %.2f V" % (dec[0],dec[1], dec[2], dec[3],dec[4],dec[5]) )
                 try:
                         for i in dec:
                                 if i>10 or i<0:
@@ -47,15 +47,15 @@ while str == "yes":
                         # Go to "dec" position
                         to_position(dec)
                         print("The platform is now at the desired position")
-                        time.sleep(3)
+                        #Get IMU values
+                        orientation = get_IMU();
+                        print("The orientation is: ")
+                        print(orientation)
+                        time.sleep(2)
                         # Go back to rest position from "dec" position
                         to_rest(dec)
                         print("The platform is now at rest position")
                         time.sleep(2)
-                        #Get IMU values
-                        #orientation = get_IMU();
-                        #print("The orientation is: ")
-                        #print(orientation)
                         str = input("Do you want to continue (yes/no): ")
                         # Go to zero position
                         turn_off()
