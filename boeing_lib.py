@@ -6,8 +6,8 @@ import smbus
 import serial
 t = np.arange(0,201,4)
 bus = smbus.SMBus(1)
-rest = 2.5
-ser = serial.Serial('/dev/ttyACM0',9600)
+rest = 2
+ser = serial.Serial('/dev/ttyACM1',9600)
 def get_leg_length(yaw,roll,pitch,x,y,z):
     "This take the orientation as input, send them to simulink and get the leg lengths back"
     position = [yaw, roll, pitch, x, y,z]
@@ -66,7 +66,7 @@ def turn_off():
         i+=1
 
         # Print statements
-        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
     return;
 
 def turn_on(): 
@@ -107,7 +107,7 @@ def turn_on():
         i+=1
 
         # Print statements
-        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
     return;
 
 def kill_platform():
@@ -151,7 +151,7 @@ def to_position(dec):
 
         i+=1
         # Print statements
-        #print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
+        print ("V1 = %.2f V, V2 = %.2f V, V3 = %.2f V, V4 = %.2f V, V5 = %.2f V, V6 = %.2f V" %(voltA,voltB,voltC,voltD,voltE,voltF))
     return;
 
 def to_rest(dec):
@@ -204,15 +204,20 @@ class VoltageOutOfRange(Error):
 def get_IMU():
     time.sleep(2)
     while True:
-        x1 = str(ser.readline(), 'utf-8')
-        #print(x1)
-        if x1 == "done\n":
-            break
-        
-    yaw = float(ser.readline())
-    pitch = float(ser.readline())
-    roll = float(ser.readline())
-    orientation = [yaw, pitch, roll]
+        try:
+            while True:
+                x1 = str(ser.readline(), 'utf-8')
+                #print(x1)
+                if x1 == "done\n":
+                    break
+                
+            yaw = float(ser.readline())
+            pitch = float(ser.readline())
+            roll = float(ser.readline())
+            orientation = [yaw, pitch, roll]
+        except ValueError:
+            continue
+        break
     return orientation;
         
     
