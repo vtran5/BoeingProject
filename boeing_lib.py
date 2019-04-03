@@ -8,12 +8,12 @@ import xlrd
 t = np.arange(0,201,4)
 bus = smbus.SMBus(1)
 rest = [2]*6
-#ser = serial.Serial('/dev/ttyACM0',9600)
+ser = serial.Serial('/dev/ttyACM0',9600)
 zero = [0]*6
 def get_leg_length(yaw,roll,pitch,x,y,z):
     "This take the orientation as input, send them to simulink and get the leg lengths back"
     position = [yaw, roll, pitch, x, y,z]
-    UDP_IP_PC = "192.168.1.4"
+    UDP_IP_PC = "192.168.1.7"
     UDP_PORT_send = 11001
 
     UDP_IP = "192.168.1.3"
@@ -21,13 +21,13 @@ def get_leg_length(yaw,roll,pitch,x,y,z):
     sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
     sock.bind((UDP_IP, UDP_PORT_receive))
-    data = pack('%sd' % len(position), *position)
+    data = pack('%sd' % len(position), *position) #%s = len(position), in this case '6d'
     #data = pack('d', 15)
     sock.sendto(data, (UDP_IP_PC, UDP_PORT_send))
     time.sleep(0.1)
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
     TestData = unpack('6d',data) # 6d stands for 6 doubles (8 bytes float),
-                                 # use !6d if data is bid endian
+                                 # use !6d if data is big endian, default is Litte Endian
     #leg_length = []
     #leg_length = TestData
     return TestData;
@@ -103,23 +103,23 @@ class VoltageOutOfRange(Error):
     """When the voltages are greater than 10V"""
     pass
 
-#def get_IMU():
-    #time.sleep(2)
-    #while True:
-        #try:
-            #while True:
-                #x1 = str(ser.readline(), 'utf-8')
+def get_IMU():
+    time.sleep(2)
+    while True:
+        try:
+            while True:
+                x1 = str(ser.readline(), 'utf-8')
                 #print(x1)
-                #if x1 == "done\n":
-                    #break
+                if x1 == "done\n":
+                    break
                 
-            #yaw = float(ser.readline())
-            #pitch = float(ser.readline())
-            #roll = float(ser.readline())
-            #orientation = [yaw, pitch, roll]
-        #except ValueError:
-         #   continue
-        #break
-    #return orientation;
+            yaw = float(ser.readline())
+            pitch = float(ser.readline())
+            roll = float(ser.readline())
+            orientation = [yaw, pitch, roll]
+        except ValueError:
+            continue
+        break
+    return orientation;
         
     

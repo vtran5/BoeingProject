@@ -2,23 +2,18 @@ from struct import*
 import socket
 import time
 
-UDP_IP =""
-UDP_TP_PC ="192.168.10.1"
-UDP_PORT = 25000
-UDP_PORT_PC = 25001
+UDP_IP ="192.168.1.3"
+UDP_IP_PC ="192.168.1.7"
+UDP_PORT = 11000
+UDP_PORT_PC = 11001
+position = [0,1,2,3,4,5]
+#sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);
+#sock.bind((UDP_IP, UDP_PORT_PC))
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);
-sock.bind((UDP_IP, UDP_PORT_PC))
+sock.bind((UDP_IP, UDP_PORT))
 
-sock_PC = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);
-sock_PC.bind((UDP_IP, UDP_PORT_PC))
 
-data,addr = sock .recvfrom(10)
-TestData = unpack('h',data)
-ReceivedTest = TestData[0] & 0x0003
-
-for x in range (0,500):
-    data, addr = sock.recvfrom(10)
-    TestData = unpack('h',data)
-    SendData=pack('h',TestData[0])
-    sent = sock_PC.sendto(SentData, (UDP_IP_PC, UDP_PORT_PC))
+data = pack('%sd' % len(position), *position) #%s = len(position), in this case '6d'
+#data = pack('d', 15)
+sock.sendto(data, (UDP_IP_PC, UDP_PORT_PC))

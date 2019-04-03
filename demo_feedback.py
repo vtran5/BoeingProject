@@ -16,7 +16,8 @@ zero_orientation = []
 orientation = []
 positions = read_file('Book1.xls')
 # Go to rest position
-turn_on();
+turn_on()
+zero_orientation = get_IMU()
 start= rest
 print("The platform is now at rest position")
 while str == "yes":
@@ -50,17 +51,17 @@ while str == "yes":
                         # Go to rest position
                         #turn_on();
                         #print("The platform is now at rest position")
-                        #zero_orientation = get_IMU()
+                        
                         time.sleep(1)
                         # Go to "dec" position
                         to_position(volt,start)
                         print("The platform is now at the desired position")
                         start = volt
                         #Get IMU values
-                        #orientation = get_IMU()
-                        #orientation = [orientation[i] - zero_orientation[i] for i in [0,1,2]]
+                        orientation = get_IMU()
+                        orientation = [orientation[i] - zero_orientation[i] for i in [0,1,2]]
                         print("The orientation is: ")
-                        #print("%.2f %.2f %.2f" % (orientation[0], orientation[1], orientation[2]))
+                        print("%.2f %.2f %.2f" % (orientation[0], orientation[1], orientation[2]))
                         time.sleep(2)
                         str = input("Do you want to continue (yes/no): ")
 # Go back to rest position from "dec" position

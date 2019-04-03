@@ -1,7 +1,7 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyACM0',9600)
+ser = serial.Serial('/dev/ttyACM1',9600)
 #while True:
     #print(1)
     #read_serial=ser.readline()
